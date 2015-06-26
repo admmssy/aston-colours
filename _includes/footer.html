@@ -1,0 +1,25 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+  $('input').on("focus", function(e) {
+    e.target.select();
+
+    var value = $( this ).val();
+
+    $(e.target).one('mouseup', function(e) {
+      e.preventDefault();
+
+      // If the copy works, brilliant! It is in the clipboard. If not, the input
+      // is selected for the user to copy it themselves.
+      try {
+        document.execCommand('copy');
+        document.getSelection().removeAllRanges();
+        e.target.blur();
+        // We need a better indicator that it has copied. What if you copy the hex,
+        // then decide you needed the RGB?
+        $('#triangle').css({ fill: value });
+      } catch(err) {
+        console.log('Copy didn\'t work. Is this a supported browser?');
+      }
+    });
+  });
+</script>

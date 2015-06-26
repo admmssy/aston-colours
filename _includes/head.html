@@ -1,0 +1,29 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+
+  <link rel="stylesheet" href="css/main.css">
+
+  <style>
+    {% for colour in site.data.colours %}
+      .{{ colour.name }} .light { background: {{ colour.light-rgb }}; }
+      .{{ colour.name }} .dark  { background: {{ colour.dark-rgb }}; }
+    {% endfor %}
+
+    @media screen and (min-width: 768px) {
+      {% for colour in site.data.colours %}
+        .couplet.{{ colour.name }}::before {
+          border-color:
+            {{ colour.light-rgb }}
+            {{ colour.dark-rgb }}
+            {{ colour.dark-rgb }}
+            {{ colour.light-rgb }};
+        }
+      {% endfor %}
+    }
+  </style>
+</head>

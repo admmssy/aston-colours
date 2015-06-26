@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<p>Click a value to copy it to the clipboard (IE/Chrome only)</p>
+
+<div class="colours">
+  {% for colour in site.data.colours %}
+    <div class="couplet {{ colour.name }}">
+      <div class="colour light">
+        <div class="values">
+          <input value="{{ colour.light-rgb }}" />
+          <input value="{{ colour.light-hex }}" />
+        </div>
+      </div>
+      <div class="colour dark">
+        <div class="values">
+          <input value="{{ colour.dark-rgb }}" />
+          <input value="{{ colour.dark-hex }}" />
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

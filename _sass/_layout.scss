@@ -1,0 +1,110 @@
+/**
+ * Top header
+ */
+
+header {
+  background: $text-color;
+  color: $background-color;
+  text-align: center;
+}
+
+header a {
+  display: block;
+  padding: $spacing-unit / 2;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#logo {
+  fill: white;
+  float: right;
+  display: none;
+}
+
+p {
+  padding: $spacing-unit / 2;
+  text-align: center;
+}
+
+
+/**
+ * Colours
+ */
+
+.couplet { color: white; }
+
+.values { padding: 5px; }
+
+.colour {
+  width: 50%;
+  float: left;
+}
+
+
+/*
+** Larger screens
+*/
+
+@include media-query($on-laptop) {
+
+  header { text-align: left; }
+
+  header a, p {
+    padding: ( $spacing-unit / 2 ) $spacing-unit;
+    text-align: left;
+  }
+
+  #logo { display: block; }
+
+  .colours {
+    padding: $spacing-unit ( $spacing-unit - 10 );
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  .couplet {
+    float: left;
+    margin: 0 10px 10px 0;
+    position: relative;
+    border: 1px solid $grey-color-light;
+    box-sizing: border-box;
+    padding: 9px;
+
+    &::before {
+      display: block;
+      width: 0px;
+      height: 0px;
+      content: ' ';
+      border: 130px solid white;
+    }
+  }
+
+  .colour {
+    width: auto;
+    position: absolute;
+    float: none;
+    background: transparent !important;
+  }
+
+  .light {
+    top: 10px;
+    left: 10px;
+  }
+
+  .dark {
+    bottom: 10px;
+    right: 10px;
+    text-align: right;
+  }
+
+  .dark input { text-align: right; }
+
+}
